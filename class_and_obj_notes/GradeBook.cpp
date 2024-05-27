@@ -18,3 +18,11 @@ void GradeBook::setCourseName (string name) {
         cout << "Name \"" << name << "\" exceeds maximum length (25).\n" "Limiting courseName to first 25 characters.\n" << endl;
     }
 }
+
+string GradeBook::getCourseName () {
+    return courseName;
+}
+
+void GradeBook::displayMessage() {
+    cout << "Welcome to the grade book for\n" << getCourseName() << "!" << endl;
+}
