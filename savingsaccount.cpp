@@ -9,7 +9,10 @@ public:
     void calculateMonthlyInterest(float);
     void setBalance(float);
     void modifyInterestRate(float);
-    void setAnnualInterestRate(float);
+    static void setAnnualInterestRate(float percent) {
+        annualInterestRate = percent;
+            cout << "The annual interest rate for this saver is: " << annualInterestRate << endl;
+    }
 
 private:
     float savingsBalance;
@@ -22,6 +25,8 @@ SavingsAccount::SavingsAccount (float savingsBalance) {
 
 void SavingsAccount::setBalance(float dollars) {
     savingsBalance = ( dollars >= 0) ? dollars : 0; //if your account is below 0 dollars, it sets it to 0
+    cout << "The balance is: $" << savingsBalance << endl;
+
 }
 
 void SavingsAccount::calculateMonthlyInterest (float annualInterestRate) {
@@ -30,12 +35,10 @@ void SavingsAccount::calculateMonthlyInterest (float annualInterestRate) {
 
 void SavingsAccount::modifyInterestRate(float percent) {
     annualInterestRate = ( percent > 0 ) ? percent : 0; //if you try to make the interest rate smaller than 0, it sets it to 0
-    cout << "The annual interest rate for this saver is: " << annualInterestRate;
+    cout << "The annual interest rate for this saver is: " << annualInterestRate << endl;
 }
 
-void SavingsAccount::setAnnualInterestRate(float percent) {
-    annualInterestRate = percent;
-}
+float SavingsAccount::annualInterestRate = 0;
 
 int main () {
     SavingsAccount saver1;
