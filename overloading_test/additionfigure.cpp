@@ -1,30 +1,46 @@
 #include <iostream>
-using std::cout;
-using std::cin;
-using std::endl;
+using namespace std;
 
-#include "Addition.h"
+#include <math.h>
+using std::ostream;
+using std::istream;
+
+class Addition {
+friend Addition &operator + ( Addition& instance_1, Addition& instance_2 );
+private:
+    int value;
+
+public: 
+    Addition(){};
+    Addition(int value){};
+    void printValue() {
+        cout << value;
+    }
+    int getValue(){
+        return value;
+    }
+};
+
+    Addition &operator + ( Addition& instance_1, Addition& instance_2 ) {
+    int tmp;
+    tmp = instance_1.getValue() + instance_2.getValue();
+    cout << tmp;
+}
 
 int main () {
-    Addition instance_1;
+    Addition instance_1(3);
+
+    cout << "The value of instance_1 is: ";
+
+    cout << instance_1.getValue() << endl << endl;
     
-    cout << "The value of the first instance" << endl;
+    Addition instance_2(4);
 
-    cin >> instance_1;
+    cout << "The value of instance_2 is: ";
 
-    cout << "The value entered was: ";
+    cout << instance_2.getValue() << endl << endl;
 
-    cout << instance_1 << endl << endl;
-    
-    Addition instance_2;
-    
-    cout << "The value of the second instance" << endl;
+    instance_1 + instance_2;
 
-    cin >> instance_2;
-
-    cout << "The value entered was: ";
-
-    cout << instance_2 << endl << endl;
-
-    cout << "The value of instance_1 + instance_2 is: " << (instance_1 + instance_2) << endl;
+    //cout << "The value of instance_1 + instance_2 is: " << instance_temp.getValue() << endl;
 }
